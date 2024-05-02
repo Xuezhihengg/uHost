@@ -1,0 +1,77 @@
+main{
+    margin: auto;
+    max-width: 80rem;
+}
+
+.testimonial {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+#customer-2 .testimonial__info{
+    align-items: end;
+    text-align: right;
+
+}
+
+.testimonial__image-container{
+    height: 100%;
+    line-height: 0px; /*解决幽灵白边*/
+    box-shadow: 5px 5px 5px 3px rgba(0,0,0,0.3);
+    margin: 3rem 0;
+}
+
+.testimonial__image{
+   width: 100%;
+   max-width: 45rem;
+}
+
+.testimonial__info{
+    display: flex;
+    flex-direction: column;
+    margin: 1.25rem;
+    padding: 1.25rem;
+}
+
+.testimonial__name{
+    font-weight: bold;
+    font-size: 3rem;
+    color: #e43667;
+}
+
+.testimonial__subtitle,.testimonial__subtitle a{
+    color: rgb(140, 163, 184);
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.testimonial__subtitle a:hover,
+.testimonial__subtitle a:active{
+    color: rgb(93, 107, 121);
+}
+
+.testimonial__text{
+    font-size: 1.3rem;
+}
+
+@media screen and (max-width: 750px) {
+    .testimonial{
+        flex-direction: column;
+    }
+
+    #customer-2{
+        margin-top: 0;
+    }
+
+    .testimonial__image-container{
+        width: 100%;
+    }
+
+    .testimonial__info{
+        width: 100%;
+        margin: 0;
+        padding: 0 1rem;
+    } 
+}

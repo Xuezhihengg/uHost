@@ -1,0 +1,276 @@
+* {
+    box-sizing: border-box;
+}
+
+html{
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 2.5rem auto 5.5rem;
+    grid-template-areas: "header"
+                         "main"
+                         "footer";
+    margin: 0;
+    font-family: "Exo 2", sans-serif ; 
+}
+
+main {
+    grid-area: main;
+}
+
+.backdrop{
+    display: none;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 200ms ;
+
+}
+
+.open-backdrop {
+    opacity: 1;
+}
+
+.main-header {
+    background: #2ddf2c;
+    padding: 0.18rem 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-area: header;
+}
+
+.toggle-button,
+.toggle-button_side{
+    justify-self: start;
+    display: none;
+    vertical-align: middle;
+    background: transparent;
+    border: none;
+    width: 3rem;
+    cursor: pointer;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.toggle-button:focus{
+    outline: none;
+}
+
+.toggle-button__bar{
+    width: 100%;
+    height: 0.2rem;
+    background: black;
+    display: block;
+    margin: 0.45rem 0;
+}
+
+.main-header>div {
+    display: flex;
+    align-items: center;
+}
+
+.main-header__icon{
+    height: 1.8rem;
+}
+.main-header__brand {
+    text-decoration: none;
+    color: #0e4f1f;
+    font-weight: bold;
+    font-size: 1.8rem;
+    font-family: "Exo 2", sans-serif;
+    cursor: pointer;
+
+}
+
+.main-header__brand:hover,
+.main-header__brand:active{
+    color: #16672c;
+}
+
+.main-nav {
+    display: flex;
+}
+
+.main-nav__items {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+}
+
+.main-nav__item {
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+.main-nav__item--cta:hover,
+.mobile-nav__item--cta:hover {
+    animation: wiggle 200ms 8 none;
+}
+
+.main-nav__item > a,
+.mobile-nav__item > a {
+    text-decoration: none;
+    color: #0e4f1f;
+    padding: 0.18rem 0;
+    font-weight: bold;
+    font-family: "Exo 2", sans-serif;
+}
+
+.main-nav__item>a:hover,
+.main-nav__item>a:active,
+.mobile-nav__item>a:hover,
+.mobile-nav__item>a:active {
+    color: white;
+    border-bottom: 5px solid white;
+}
+
+.main-nav__item--cta a,
+.mobile-nav__item--cta a {
+    color: white;
+    background: #ff168f;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active,
+.mobile-nav__item--cta a:hover,
+.mobile-nav__item--cta a:active {
+    color: #ff168f;
+    background: white;
+    border: none;
+}
+
+.mobile-nav{
+    z-index: 4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #2ddf2c;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    transform: translateX(-100%);
+    transition: transform 300ms;
+    display: grid;
+    grid-template-rows: 2.5rem auto;
+}
+
+.open-mobile-nav{
+    transform: translateX(0);
+}
+
+.mobile-nav__items{
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav__item {
+    margin: 2rem;
+
+}
+
+.main-footer {
+    grid-area: footer;
+    background: black;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.main-footer__links {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-footer__link {
+    margin: 0 1rem;
+}
+
+.main-footer__link a {
+    color: white;
+    text-decoration: none;
+}
+
+.main-footer__link a:hover,
+.main-footer__link a:active {
+    color: #ccc;
+}
+
+.button {
+    color: white;
+    background: #0e4f1f;
+    font: inherit;
+    font-weight: bold;
+    border: 2px solid #0e4f1f;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+    color: #0e4f1f;
+    background: white;
+}
+
+/*适于移动设备的样式*/
+@media screen and (max-width: 750px) {
+    body {
+            grid-template-rows: 2.5rem auto 9.5rem;
+        }
+
+    .toggle-button,
+    .toggle-button_side{
+        display: inline-block;
+    }
+
+    .main-nav{
+        display: none;
+    }
+
+    .main-footer{
+        padding: 0.2rem;
+    }
+
+    .main-footer__links{
+        flex-direction: column;
+    }
+
+    .main-footer__link{
+        margin: 1rem;
+    }
+}
+
+@keyframes wiggle{
+    0%{
+        transform: rotateZ(0deg);
+    }
+    50%{
+        transform: rotateZ(-5deg);
+    }
+    100%{
+        transform: rotateZ(5deg);
+    }
+}
